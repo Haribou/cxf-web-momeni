@@ -13,8 +13,8 @@
                 x-on:mouseover="highlight = true" 
                 x-on:mouseout="highlight = false" 
                 x-bind:class="highlight ? 'boxActive' : 'boxInactive'">
-                <div id='company'>Momeni</div>
-                <div id='tagline'>The Art of Upscale Living</div>
+                <div id="company">Momeni</div>
+                <div id="tagline">The Art of Upscale Living</div>
                 <div id="prompt" 
                     x-show="highlight">
                     Custom luxe furnishings for your home - consult with an online designer now!
@@ -38,7 +38,7 @@
                                             const requestHeader = new Headers();
                                             const requestOptions = {};
 
-                                            this.chatOutput += '<div style=\"text-align: left;\"></div>';
+                                            this.chatOutput += '<div style=&quot;text-align: left;&quot;></div>';
                                             this.sendChatInput = true;
                                             
                                             requestHeader.append('Authentication', 'Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IkhYbkUwS0F5VXh3QmVsal9CTy1ocSJ9.eyJpc3MiOiJodHRwczovL2N4ZmFicmljLnVzLmF1dGgwLmNvbS8iLCJzdWIiOiJhdXRoMHw2NmUzNjgwZGJkMDMxMGUxZDUwMjUwZjciLCJhdWQiOlsiaHR0cHM6Ly9hcHAuY3hmYWJyaWMuaW8vYXBpLyIsImh0dHBzOi8vY3hmYWJyaWMudXMuYXV0aDAuY29tL3VzZXJpbmZvIl0sImlhdCI6MTcyNzk5MDY4MiwiZXhwIjoxNzI4MDc3MDgyLCJzY29wZSI6Im9wZW5pZCBwcm9maWxlIGVtYWlsIiwiYXpwIjoiQUI1S3JOOVJWNWlRS1o1cUY3cGF0Z2ZKNVlFQWJpWDEifQ.H434mxsLeyEJsbSxQPzOluqCu1SLMT4cniXNWZ-AmVBQZAaMrRqfAwQk7O7P8fLeOPZOOyZ68C6IJzdsApQsCWfxeaTdNbh3zq6oeiGf3fHOk2xXIXikqoUGEioc4cpFnlijpgpeecYMlyGh60r3sopHYB5Ty-Ub7GHdj2DsDUioDf0fUqctwcek4dj6esteiVrv8wwK95e3FfZbenfUmhcUQkXlseheWqlOV4e3NHUEXK24TUtJwxWCAVsqHTRlZCMLnUsyKyrclx-acMWbZ5tr1Lm7PZcLuKxi_IJSuetYkf4KxyUAnXQsWDmx7NSVtxt4907XPpgnikQ8cT9lDg');
@@ -53,7 +53,7 @@
                                                 const response = await fetch(ipaasEndpointUrl, requestOptions);
                                                 if (!response.ok) 
                                                 {
-                                                    this.chatOutput += '<div style=\"text-align: right;\">Bot: sorry, our bot is unable to respond at this time. Please try again later.</div>';
+                                                    this.chatOutput += '<div style=&quot;text-align: right;&quot;>Bot: sorry, our bot is unable to respond at this time. Please try again later.</div>';
                                                     console.error(`Response status: ${response.status}`);
                                                 }
 
@@ -61,7 +61,7 @@
                                                 this.chatOutput = json;
                                             } catch (error) 
                                             {
-                                                this.chatOutput = '<div style=\"text-align: right;\">Bot: sorry, our bot is unable to respond at this time. Please try again later.</div>';
+                                                this.chatOutput += '<div style=&quot;text-align: right;&quot;>Bot: sorry, our bot is unable to respond at this time. Please try again later.</div>';
                                                 console.error(`Response error: ${error.message}`);
                                             }
 
