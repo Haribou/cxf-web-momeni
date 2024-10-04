@@ -1,0 +1,112 @@
+body {
+    background-image: url('../img/momeniBackground.jpg'); 
+    background-repeat: no-repeat;
+    background-color: black;
+    background-position: center;
+    background-attachment: fixed;
+    background-size: 75% 75%;
+    font-family: 'Century Gothic', Consolas, Geneva, AppleGothic, sans-serif;
+}
+
+#outerBox {
+    margin: auto;
+    padding-top: 20%;
+    font-weight: bold;
+    width: 40%; 
+}
+
+#baseBox {
+    border-radius: 3px; 
+    cursor:default;
+    padding: 10px;
+}
+
+.boxInactive {
+    color: white;
+    border: 3px white solid;
+}
+
+
+.boxActive {
+    color: gray; 
+    border: 3px gray solid;
+}
+
+#company {
+    font-size: 42pt;
+    letter-spacing: 3px;
+    text-align: center;
+}
+
+#tagline {
+    font-size: 32pt;
+    letter-spacing: 3px;
+    text-align: center;
+}
+
+#prompt {
+    color: white; 
+    background-color: gray; 
+    text-align: center; 
+    padding: 5px;
+}
+
+
+#footer {
+    position: absolute; 
+    bottom: 5%; 
+    width: 99%;
+}
+
+.tableElement {
+    text-align: center;
+    color: white;
+    border: 1px solid white;
+    border-radius: 3px;
+    padding: 3px;
+    width: 200px;
+    cursor: pointer;
+}
+
+#chatBox {
+    position: fixed; 
+    bottom: 10%; 
+    left: 40%; 
+    width: 20%; 
+    height: 25%; 
+    border: 3px solid white; 
+    border-radius: 3px; 
+    background: rgb(223, 213, 213); 
+    z-index: 100;
+}
+
+#chatWidget {
+    width: 100%;
+    text-align: center;
+}
+
+.chat {
+    width: 100%;
+    font-weight: bold;
+    resize: none;
+    padding: 5px;
+}
+#sendChatButton {
+    height: 50px;
+    width: 100%;
+    font-weight: bold;
+    font-size: 10pt;
+    cursor: pointer;
+    border: outset 2px;
+    border-radius: 3px;
+}
+
+.highlightChatButton {
+    color: green;
+    background-color: white;
+}
+
+.muteChatButton {
+    color: white;
+    background-color: green;
+}

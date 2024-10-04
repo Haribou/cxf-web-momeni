@@ -1,0 +1,101 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Momeni</title>
+        <link href="img/momeni.ico" rel="icon"/>
+        <link href="css/momeni.css" rel="stylesheet" type="text/css">
+        <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    </head>
+    <body>
+        <div id='outerBox'>
+            <div id="baseBox" 
+                x-data="{ highlight: false }" 
+                x-on:mouseover="highlight = true" 
+                x-on:mouseout="highlight = false" 
+                x-bind:class="highlight ? 'boxActive' : 'boxInactive'">
+                <div id='company'>Momeni</div>
+                <div id='tagline'>The Art of Upscale Living</div>
+                <div id="prompt" 
+                    x-show="highlight">
+                    Custom luxe furnishings for your home - consult with an online designer now!
+                </div>
+            </div>
+        </div>
+        <div id="footer">
+            <table style="width: 50%; margin:auto;">
+                <tbody>
+                    <tr>
+                        <td class="tableElement" 
+                            x-data="{ 
+                                        showChat: false, 
+                                        chatInput: '',
+                                        chatOutput: '',
+                                        sendChatInput: false,
+                                        
+                                        async getChatResponse() 
+                                        {
+                                            const ipaasEndpointUrl = 'https://cxf-executor.cxfabric.io/restendpoint?tenant_id=cus_Qq1VswmBJg8f93&flow_id=11344260-145a-4e2a-8089-521759875e99';
+                                            const requestHeader = new Headers();
+                                            const requestOptions = {};
+
+                                            this.chatOutput += '<div style=\"text-align: left;\"></div>';
+                                            this.sendChatInput = true;
+                                            
+                                            requestHeader.append('Authentication', 'Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IkhYbkUwS0F5VXh3QmVsal9CTy1ocSJ9.eyJpc3MiOiJodHRwczovL2N4ZmFicmljLnVzLmF1dGgwLmNvbS8iLCJzdWIiOiJhdXRoMHw2NmUzNjgwZGJkMDMxMGUxZDUwMjUwZjciLCJhdWQiOlsiaHR0cHM6Ly9hcHAuY3hmYWJyaWMuaW8vYXBpLyIsImh0dHBzOi8vY3hmYWJyaWMudXMuYXV0aDAuY29tL3VzZXJpbmZvIl0sImlhdCI6MTcyNzk5MDY4MiwiZXhwIjoxNzI4MDc3MDgyLCJzY29wZSI6Im9wZW5pZCBwcm9maWxlIGVtYWlsIiwiYXpwIjoiQUI1S3JOOVJWNWlRS1o1cUY3cGF0Z2ZKNVlFQWJpWDEifQ.H434mxsLeyEJsbSxQPzOluqCu1SLMT4cniXNWZ-AmVBQZAaMrRqfAwQk7O7P8fLeOPZOOyZ68C6IJzdsApQsCWfxeaTdNbh3zq6oeiGf3fHOk2xXIXikqoUGEioc4cpFnlijpgpeecYMlyGh60r3sopHYB5Ty-Ub7GHdj2DsDUioDf0fUqctwcek4dj6esteiVrv8wwK95e3FfZbenfUmhcUQkXlseheWqlOV4e3NHUEXK24TUtJwxWCAVsqHTRlZCMLnUsyKyrclx-acMWbZ5tr1Lm7PZcLuKxi_IJSuetYkf4KxyUAnXQsWDmx7NSVtxt4907XPpgnikQ8cT9lDg');
+                                            requestHeader.append('Content-Type', 'application/json');
+                                            requestOptions.method = 'POST';
+                                            requestOptions.headers = requestHeader;
+                                            requestOptions.body = { chatInput: this.chatInput };
+                                            requestOptions.mode = 'cors';
+
+                                            try 
+                                            {
+                                                const response = await fetch(ipaasEndpointUrl, requestOptions);
+                                                if (!response.ok) 
+                                                {
+                                                    this.chatOutput += '<div style=\"text-align: right;\">Bot: sorry, our bot is unable to respond at this time. Please try again later.</div>';
+                                                    console.error(`Response status: ${response.status}`);
+                                                }
+
+                                                const json = await response.json();
+                                                this.chatOutput = json;
+                                            } catch (error) 
+                                            {
+                                                this.chatOutput = '<div style=\"text-align: right;\">Bot: sorry, our bot is unable to respond at this time. Please try again later.</div>';
+                                                console.error(`Response error: ${error.message}`);
+                                            }
+
+                                            this.sendChatInput = false;
+                                        }
+                                    }">
+                            <div></div>
+                                <div id="chatBox" x-show="showChat" x-transition>
+                                    <table id="chatWidget">
+                                        <tbody>
+                                            <tr>
+                                                <td><textarea class="chat" rows="5" maxlength="5000" readonly="true"
+                                                    x-html="chatOutput"></textarea></td>
+                                            </tr>
+                                            <tr>
+                                                <td><textarea class="chat" rows="5" placeholder="Type your question..." maxlength="1000"
+                                                    xmodel="chatInput" x-effect="console.info(chatInput)"></textarea></td>
+                                            </tr>
+                                            <tr>
+                                                <td><button id="sendChatButton" class="muteChatButton" x-on:click="sendChatInput = true; getChatResponse();" x-bind:class="sendChatInput ? 'highlightChatButton' : 'muteChatButton'">Send</button></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div x-on:click="showChat = !showChat">
+                                    Talk to a designer
+                                </div>
+                            </div>
+                        </td>
+                        <td class="tableElement">Visit us</td>
+                        <td class="tableElement">Contact</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </body>
+</html> 
